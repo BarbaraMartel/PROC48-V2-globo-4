@@ -31,8 +31,7 @@ function preload(){
   gameOverImg= loadImage("assets/gameOver.png")
   restartImg = loadImage("assets/restart.png")
 
-jumpSound = loadSound("assets/jump.mp3");
-dieSound = loadSound("assets/die.mp3");
+
 
 }
 
@@ -84,7 +83,7 @@ function draw() {
     // Haciendo saltar al globo aerostático
     if(keyDown("space")) {
       balloon.velocityY = -6 ;
-      jumpSound.play();
+      //agregar sonido
     }
 
     // Agregando gravedad
@@ -102,7 +101,8 @@ if(topObstaclesGroup.isTouching(balloon) || balloon.isTouching(topGround)
 || balloon.isTouching(bottomGround) || bottomObstaclesGroup.isTouching(balloon)){
 
 gameState = END;
-dieSound.play();
+//Agregar sonido
+  
 }
 
 
@@ -110,16 +110,14 @@ dieSound.play();
 
 /*if(topObstaclesGroup.isTouching(balloon) || balloon.isTouching(topGround)){
   balloon.velocityY = 6 ;
-  jumpSound.play();
+  //Agregar sonido
+    
 }*/
 
 
 // Agregando AI al globo para cuando toque topObstaclesGroup y topGround
 
-/*if(balloon.isTouching(bottomGround) || bottomObstaclesGroup.isTouching(balloon)){
-  balloon.velocityY = -6 ;
-  jumpSound.play();
-}*/
+
 
   }
 
@@ -271,24 +269,6 @@ function Score()
 
 // Usando llamadas a la API para configurar la imagen de fondo de acuerdo al tiempo
 async function getBackgroundImg(){
-  //var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
-  var response = await fetch("http://worldtimeapi.org/api/timezone/America/Mexico_City");
-  var responseJSON = await response.json();
-
-  var datetime = responseJSON.datetime;
-  var hour = datetime.slice(11,13);
-  
-  if(hour>=06 && hour<=19){
-    
-    bg.addImage(bgImg);
-    bg.scale = 1.3
-  }
-  else{
-    
-    bg.addImage(bgImg2);
-    bg.scale = 1.5
-    bg.x=200
-    bg.y=200
-  }
+ 
 
 }
